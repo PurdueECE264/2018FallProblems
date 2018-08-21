@@ -34,7 +34,7 @@ Selection sort (for the ascending order), operates on the following
 principle:
 
 1. find the smallest number
-2. move it to the beginning
+2. move it to the beginning of the list
 3. exclude the number, and sort the rest of the data
 
 Write Self-Checking Code
