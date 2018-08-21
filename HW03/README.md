@@ -84,9 +84,10 @@ The table uses `X` and `Y` for clarity.  Your program should use only `X`.
 What Do You Need to Do
 ======================
 
-Write the `josephus` function and print the index of the eliminated elements.
+Write the `josephus` function and print the index of the array to the terminal in the order the elements are eliminated. 
+Finally, print the index of last element which doesn't get eliminated. Please see the examples below
 
-In the first example, the output is
+In the first example i.e. n=6, k=3; the output is
 ```
 2
 5
@@ -96,7 +97,7 @@ In the first example, the output is
 0
 ```
 
-In the second example, the output is
+In the second example i.e. n=6,k=4; the output is
 
 ```
 3
@@ -107,6 +108,7 @@ In the second example, the output is
 4
 ```
 
+Please do not rely on just these two examples. Create your own test cases to verify that your code works properly.
 Submission
 ==========
 
