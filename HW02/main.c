@@ -40,7 +40,7 @@ int main(int argc, char * * argv)
     {
       count ++;
     }
-  fprintf(stdout, "The file has %d integers\n", count);
+  //fprintf(stdout, "The file has %d integers\n", count);
   // allocate memory to store the numbers
   int * arr = malloc(sizeof(int) * count);
   if (arr == NULL) // malloc fail
