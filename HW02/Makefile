@@ -17,7 +17,7 @@ sort: $(OBJS)
 .c.o: 
 	$(GCC) $(TESTFALGS) -c $*.c 
 
-testall: test1 test2 test3 test4
+testall: test1 test2 test3
 
 testadd: sort # sort here to ensure recompilation if necessary
 	test1
