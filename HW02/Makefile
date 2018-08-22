@@ -25,16 +25,16 @@ testadd: sort # sort here to ensure recompilation if necessary
 	test3
 
 test1: sort
-	./sort test1 > output1
-	diff output1 expected1
+	./sort inputs/test1 > output1
+	diff output1 expected/expected1
 
 test2: sort
-	./sort test2 > output2
-	diff output2 expected2
+	./sort inputs/test2 > output2
+	diff output2 expected/expected2
 
 test3: sort
-	./sort test3 > output3
-	diff output3 expected3
+	./sort inputs/test3 > output3
+	diff output3 expected/expected3
 
 clean: # remove all machine generated files
 	rm -f sort *.o output?
