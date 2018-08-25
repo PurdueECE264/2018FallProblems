@@ -2,9 +2,7 @@
 // *** DO NOT modify this file
 // ***
 
-//Is this a change?
-//More change
-//3rd change
+//This should be the master.
 
 #include <stdio.h>  
 #include <stdlib.h> 
