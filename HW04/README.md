@@ -128,6 +128,11 @@ To generate the test cases, you can think in the following way
 ```
 
 
+Things to note
+---------------------------------
+1. Please do not use `srand` function again, we have already used it. If you use it again you will get error.
+
+
 Files with this assignment
 ---------------------------------
 
@@ -146,7 +151,7 @@ Following are the files that you will see with the code:
 To test your code. You have to first compile it and the run the following command.
 
 ```
-./hw04 test/test1.txt 2 output/output1.txt
+./hw04 test/test1.txt 2 output1.txt
 ```
 1. hw04 - This is binary that should get generated
 2. test1.txt - this is the input file which contains data points for which K mean algorithm needs to run
