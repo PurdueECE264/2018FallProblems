@@ -168,6 +168,9 @@ These test cases are of the name test/test(x).txt. To generate those test we use
 		python main.py -o test/test3.txt --overlap False -num 200 -cluster 4 -d 2
 		python main.py -o test/test4.txt --overlap False -num 1000 -cluster 5 -d 5
 		python main.py -o test/test5.txt --overlap False -num 500 -cluster 10 -d 4
+ 		python main.py -o test/test7.txt --overlap False --num 10 --cluster 2 -d 2
+		python main.py -o test/test7.txt --overlap False --num 30 --cluster 2 -d 3
+		python main.py -o test/test8.txt --overlap False --num 10 --cluster 2 -d 2
 
 ```
 
