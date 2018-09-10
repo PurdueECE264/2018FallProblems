@@ -5,7 +5,7 @@
 WARNING = -Wall -Wshadow --pedantic
 ERROR = -Wvla -Werror
 GCC = gcc -std=c99 -g $(WARNING) $(ERROR)
-valgrind --tool=memcheck --log-file=memcheck.txt --leak-check=full --verbose
+VAL = valgrind --tool=memcheck --log-file=memcheck.txt --leak-check=full --verbose
 
 TESTFALGS = -DTEST_MAIN -DTEST_COMP -DTEST_COUNT -DTEST_FILL
 
