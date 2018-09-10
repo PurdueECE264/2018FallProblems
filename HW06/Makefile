@@ -5,6 +5,7 @@
 WARNING = -Wall -Wshadow --pedantic
 ERROR = -Wvla -Werror
 GCC = gcc -std=c99 -g $(WARNING) $(ERROR) 
+VALGRIND = valgrind --tool=memcheck --verbose
 
 TESTFALGS = -DTEST_MAIN -DTEST_COMP -DTEST_FILL -DTEST_WRITE -DTEST_COUNT
 
@@ -13,6 +14,9 @@ OBJS = $(SRCS:%.c=%.o)
 
 hw06: $(OBJS) 
 	$(GCC) $(TESTFALGS) $(OBJS) -o hw06
+	
+testmemory: $(TARGET)
+	$(VALGRIND) ./hw06
 
 .c.o: 
 	$(GCC) $(TESTFALGS) -c $*.c 
