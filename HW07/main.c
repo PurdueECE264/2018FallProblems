@@ -122,7 +122,7 @@ int main(int argc, char * * argv)
   if (fp == NULL)
     {
        fprintf(stderr, "fopen fail\n");
-	// do not fclose (fptr) because fptr failed
+	// do not fclose (fp) because fp failed
        return EXIT_FAILURE;
     }
   for (ind = 0; ind < count; ind ++)
