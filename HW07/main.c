@@ -114,7 +114,7 @@ int main(int argc, char * * argv)
 #ifdef TEST_MERGESORT
   // modify here between ifdef and endif
   // do not modify anywhere else in this function
-  // call mergesort function and provide the correct arguments (Hint: array, start index, end index
+  // call mergesort function and provide the correct arguments (Hint: array, start index, end index)
 #endif
   int i;
    /* open the file for writing*/
@@ -122,12 +122,14 @@ int main(int argc, char * * argv)
   if (fp == NULL)
     {
        fprintf(stderr, "fopen fail\n");
+	// do not fclose (fptr) because fptr failed
+       return EXIT_FAILURE;
     }
   for (ind = 0; ind < count; ind ++)
     {
        fprintf (fp,"%d\n", arr[ind]);
     }
- 
+  fclose (fp);
   free (arr);
   return EXIT_SUCCESS;
 }
