@@ -75,7 +75,7 @@ The goal of this homework is: To read from a binary file, into an array of struc
 
 The number of elements in the array, the input and output files are specified through the terminal during runtime.
 
-A partial Makefile, has been provided to you for reference. Please make the changes that you may need for the execution of your program.
+A partial Makefile, has been provided to you for reference. Please make the changes that you may need for the execution of your program. Use `make testmemory` to check for memory errors using Valgrind, please change the make file to check for all test cases.
 	
 	
 WHAT TO SUBMIT

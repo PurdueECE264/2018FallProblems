@@ -1,21 +1,26 @@
 # ***
-# *** DO NOT modify this file 
+# *** DO NOT modify this file
 # ***
 
 WARNING = -Wall -Wshadow --pedantic
 ERROR = -Wvla -Werror
-GCC = gcc -std=c99 -g $(WARNING) $(ERROR) 
+GCC = gcc -std=c99 -g $(WARNING) $(ERROR)
+VAL = valgrind --tool=memcheck --log-file=memcheck.txt --leak-check=full --verbose
 
 TESTFALGS = -DTEST_MAIN -DTEST_COMP -DTEST_COUNT -DTEST_FILL
 
 SRCS = main.c
 OBJS = $(SRCS:%.c=%.o)
 
-sort: $(OBJS) 
+sort: $(OBJS)
 	$(GCC) $(TESTFALGS) $(OBJS) -o sort
 
-.c.o: 
-	$(GCC) $(TESTFALGS) -c $*.c 
+.c.o:
+	$(GCC) $(TESTFALGS) -c $*.c
+
+testmemory: sort
+	$(VAL) ./sort inputs/test3 > output3
+#testing only input3 and output3
 
 testall: test1 test2 test3
 

@@ -5,6 +5,7 @@
 WARNING = -Wall -Wshadow --pedantic
 ERROR = -Wvla -Werror
 GCC = gcc -std=c99 -g $(WARNING) $(ERROR) 
+VAL = valgrind --tool=memcheck --log-file=memcheck.txt --leak-check=full --verbose
 
 TESTFALGS = -DTEST_MAIN -DTEST_COMP -DTEST_FILL -DTEST_WRITE -DTEST_COUNT
 
@@ -13,6 +14,10 @@ OBJS = $(SRCS:%.c=%.o)
 
 hw06: $(OBJS) 
 	$(GCC) $(TESTFALGS) $(OBJS) -o hw06
+	
+testmemory: $(TARGET)
+	$(VAL) ./hw06 inputs/test1.bin output1.bin
+# Test memory leaks for all inputs and outputs
 
 .c.o: 
 	$(GCC) $(TESTFALGS) -c $*.c 
