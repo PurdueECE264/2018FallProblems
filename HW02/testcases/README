@@ -1,0 +1,8 @@
+## Selection Sort Test case
+
+To run the test case, use the following approach:
+1. copy all thre required code file except Makefile
+2. the expected files are in `expected` folder
+3. run `make` to make your binary for running
+4. `make test(x)` will run `x` test case
+5. output from your code will be save in `output(x).txt`

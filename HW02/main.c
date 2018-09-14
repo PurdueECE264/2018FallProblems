@@ -2,6 +2,10 @@
 // *** DO NOT modify this file
 // ***
 
+//This should be the master.
+//Changes in branch2
+//These are my changes in the issues branch
+
 #include <stdio.h>  
 #include <stdlib.h> 
 #include <string.h> 
