@@ -74,6 +74,8 @@ tedious and, as a result, these students do not test their programs
 well.  Their programs may fail test cases during grading.  In fact,
 some students' programs fail even the test cases given to them.
 
+Use `make testmemory` to check for memory errors using Valgrind. Ideally, the `memcheck.txt` file should contain "ERROR SUMMARY: 0 errors from 0 contexts" at the bottom of the report.
+
 THIS WOULD BE THE LAST HOMEWORK WHERE THE ENTIRE MAKEFILE WOULD BE PROVIDED BY US.
 
 Create More Test Cases

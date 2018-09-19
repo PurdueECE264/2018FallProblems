@@ -63,7 +63,6 @@ void mergeSort(int arr[], int l, int r)
         4. Use the merge() function to arrange in order */
 	//DO not modify below this line until specified in comments
     } 
-} 
 #endif
 int main(int argc, char * * argv)
 {
@@ -114,7 +113,7 @@ int main(int argc, char * * argv)
 #ifdef TEST_MERGESORT
   // modify here between ifdef and endif
   // do not modify anywhere else in this function
-  // call mergesort function and provide the correct arguments (Hint: array, start index, end index
+  // call mergesort function and provide the correct arguments (Hint: array, start index, end index)
 #endif
   int i;
    /* open the file for writing*/
@@ -122,12 +121,14 @@ int main(int argc, char * * argv)
   if (fp == NULL)
     {
        fprintf(stderr, "fopen fail\n");
+	// do not fclose (fp) because fp failed
+       return EXIT_FAILURE;
     }
-  for (ind = 0; ind < count; ind ++)
+  for (i = 0; i < count; i ++)
     {
-       fprintf (fp,"%d\n", arr[ind]);
+       fprintf (fp,"%d\n", arr[i]);
     }
- 
+  fclose (fp);
   free (arr);
   return EXIT_SUCCESS;
 }

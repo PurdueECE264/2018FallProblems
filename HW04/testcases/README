@@ -1,0 +1,9 @@
+## K-Means Problem Test cases for grading
+
+To run the test case, use the following approach:
+
+1. copy all the required code file(all .c and .h files) except Makefile
+2. the expected files are in `expected` folder
+3. run `make` to make your binary for running
+4. `make test(x)` will run `x` test case
+5. output from your code will be save in `output(x).txt`
