@@ -362,7 +362,7 @@ Ensure, you allocate and deallocate memory. Grading will be done based on memory
 
 <strong>A sample Makefile is provided, but it is not complete.</strong><br>
 * Your Makefile should include, `/.shuf 4 | sort > output_file.txt`
-	* where, `shuf` is the object file.
+	* where, `shuf` is the executable file.
 	* The integer value (`k`), (in this case `4`) indicates the number of cards.
 	* `sort` is used because, the order generated can be slightly different based on implementation (However, the number of shuffle possibilities generated will ALWAYS be the same, i.e. `2<sup>k</sup> - 2`)
 	* `output_file.txt` is the output file. You can compare this with the expected files provided.
