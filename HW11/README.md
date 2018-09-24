@@ -19,7 +19,7 @@ This assignment requires you to do the following :
 3. Run Adaptive Thresholding algorithm on grayscale image
 4. Save the new image in BMP format
 
-Note: Do not use floating point variables for this assignment. Only use integers for all calculations. Do not modify the function given to you. Floating point numbers cannot represent a value precisely. This can lead to rounding off errors. For example if x is a very large number and y is significantly smaller then, 
+Note: Do not use floating point variables for this assignment. Only use integers for all calculations except in the function given to you. Do not modify the function given to you. Floating point numbers cannot represent a value precisely. This can lead to rounding off errors. For example if x is a very large number and y is significantly smaller then, 
 
 x + y - x and x - x + y can lead to two different outputs.
 
