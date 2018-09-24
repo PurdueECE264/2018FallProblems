@@ -370,9 +370,11 @@ Ensure, you allocate and deallocate memory. Grading will be done based on memory
 * Please check the expected/ directory to see what the output should look like. Please keep in mind we have provided the `print_deck()` function for you to use.
 
 
-## Please remember the order of your output might be different, you need to ensure that your Makefile includes `sort`, so your output can be matched to the expected output.
+### Please remember the order of your output might be different, you need to ensure that your Makefile includes `sort`, so your output can be matched to the expected output.
 
-## Please use the print_deck() to print the shuffled decks. Do not write your own function to print the decks.
+### Please use the print_deck() to print the shuffled decks. Do not write your own function to print the decks.
+
+### You can create additional functions/structures/variables. Please ensure, they are within the #ifdef and #endif of the calling function.
 	
 WHAT TO SUBMIT
 ==============
