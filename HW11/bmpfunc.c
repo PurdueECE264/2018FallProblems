@@ -6,8 +6,8 @@
 
 int RGB2Gray(unsigned char red, unsigned char green, unsigned char blue){
 	// this is a commonly used formula
-	double gray = 0.2989 * red + 0.5870 * green + 0.1140 * blue;
-	return (int) gray;
+	int gray = 0.2989 * red + 0.5870 * green + 0.1140 * blue;
+	return gray;
 }
 
 #endif
@@ -54,7 +54,7 @@ BMPImage * AdaptiveThresholding(BMPImage * grayImage, int radius, int epsilon){
          	//add all data values at every location point in data
 		//keep a counter for averaging
 	//Outside the second nested loop: 
-	//calculate averge
+	//calculate averge (using int)
 	//check if average-epsilon is greater than grayImage->data[at that pixel point]
 	//then assign adaptive thresholding image data as 0(black) for data value at pixel, pixel+1, pixel+2
      
