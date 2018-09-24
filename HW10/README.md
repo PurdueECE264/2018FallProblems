@@ -45,7 +45,7 @@ According to this equation, Red has contribute 29.89%, Green has contributed 58.
 
 ![Image](jpgfiles/weighted_gray.jpg)
 
-This is our desired conversion to grayscale. THe image is brighter and better distributed.
+This is our desired conversion to grayscale. The image is brighter and better distributed.
 
 # Functions you need to complete
 In this exercise, you have to complete six functions - `BMP_Open`, `Is_BMPHeader_Valid`,`BMP_Write`, `BMP_Free` in `bmpimage.c`;`ImgToGray` in `bmpfunc.c`; and `main()` in `hw10.c`.
