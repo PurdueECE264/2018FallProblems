@@ -21,8 +21,8 @@ int main(int argc, char ** argv)
 
 	// Read the number of cards from the terminal input
 	   // For example
-			//int size = strtol(argv[1]);
-			//int shuff = strtol(argv[2]);
+			//int size = strtol(...);
+			//int shuff = strtol(...);
 
 	//call repeat_shuffle(orig_deck, shuff);
 	return EXIT_SUCCESS;

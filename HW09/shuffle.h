@@ -5,9 +5,9 @@
 
 void divide(CardDeck orig_deck, CardDeck* upper_deck, CardDeck* lower_deck);
 
-void interleave(CardDeck upper_deck, CardDeck lower_deck);
+void interleave(CardDeck upper_deck, CardDeck lower_deck, int repeat);
 
-void shuffle(CardDeck orig_deck);
+void shuffle(CardDeck orig_deck, int repeat);
 
 void repeat_shuffle(CardDeck orig_deck, int k);
 

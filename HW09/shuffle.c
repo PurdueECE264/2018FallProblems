@@ -9,13 +9,6 @@
 // You can add more functions, structures, and vairables to this file.  
 	// Helper functions must start with '_'.
 
-
-//For example global variables can be defined as: 
-	//int present_k; 
-		//keeps track of the number of repeats for each iteration for shuffle cards
-	//int repeat_iter;
-		//keeps track of repeats for each iteration
-
 //This is an example of a helper function.
 	//clean function whenever malloc fails in shuffle function
 static void _error_clean()
@@ -40,7 +33,10 @@ void divide(CardDeck orig_deck, CardDeck* upper_deck, CardDeck* lower_deck)
 
 
 #ifdef TEST_INTER
-void interleave(CardDeck upper_deck, CardDeck lower_deck)
+//repeat holds the number of shuffles yet to be performed.
+//after the interleave operation has been completed, you will recursively call
+	//repeat_shuffle(...) with a decremented value of repeat.
+void interleave(CardDeck upper_deck, CardDeck lower_deck, int repeat)
 {
     // Follow instructions in the README, to understand the working of the recursive function.
     
@@ -57,7 +53,8 @@ void interleave(CardDeck upper_deck, CardDeck lower_deck)
 #endif
 
 #ifdef TEST_SHUF
-void shuffle(CardDeck orig_deck)
+//repeat holds the number of shuffles that are yet to be performed.
+void shuffle(CardDeck orig_deck, int repeat)
 {
     // declare a variable to hold the number of pairs
         // we can say that we have only size-1 possibility of pairs

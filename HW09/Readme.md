@@ -35,9 +35,11 @@ Shuffling Method
 Tips
 ====
 
-* It is likely that your helper functions used in HW08 require some adjustments. (The `divide(…)`,  `interleave(…)` and `shuffle(…)` function signatures should not change.) 
+* It is likely that your helper functions used in HW08 require some adjustments. (The `divide(…)`,  `interleave(…)` and `shuffle(…)`)
 
-* More specifically, you probably have to add some more parameters to the helper functions written for HW08 in order to keep track of how many times the cards have been shuffled or how many more rounds of shuffling remain.
+* The `interleave(...)` and `shuffle(...)` functions have a new parameter, `int repeat`. This is for holding the number of shuffles yet to be performed.
+
+* At the end of the interleave operation, you will recursively call `repeat_shuffle(...)` with decremented value of repeat.
 
 <strong>Tips for getting started</strong><br>
 
@@ -64,7 +66,7 @@ Tips
   * You may wish to modify your `main(…)` to accept two command-line arguments: the number of cards in a deck (`argv[1]`), and the number of rounds of shuffling to be performed (`argv[2]`).
 * Too many rounds of shuffling will generate a large number of possible orderings. This may affect your testing in three ways:
   * Your implementation may require you to allocate memory to store the orderings. If the number of rounds of shuffling is too high, you may run out of memory. (If you run out of memory, you should free the memory you have allocated so far, and `return EXIT_FAILURE` from the `main()` function). Therefore, it is important that after you call `malloc()`, you always check to see whether the `malloc()` function is successful in returning a non-NULL address.
-  * For your testing, you probably want to save the output to a file. `./shuffle 4 3 > ordering_output`. The screen output will be redirected and be stored in the file `ordering_output`. Too many rounds of shuffling may result in an extremely large file, and you may run out of disk quota. 
+  * For your testing, you probably want to save the output to a file. `./shuffle 4 3 | sort > output`. The screen output will be redirected and be stored in the file `output`. Too many rounds of shuffling may result in an extremely large file, and you may run out of disk quota. 
     * Therefore, you should not attempt a large number of rounds of shuffling during testing AND also redirect the screen output to a file. It is fine to attempt a large number of rounds of shuffling, without redirecting the screen output to a file, to stress test your memory allocation, if necessary.
    * Depending on your implementation, you may have a deep recursion that exhaust all space on the call stack.
    
@@ -79,11 +81,13 @@ Functions to complete
    * In `interleave(…)`, when the newly shuffled deck is complete, you will perform another `k-1` rounds of shuffling with the new deck.
    * Print only the results obtained after `k` rounds of shuffling
  
-* <strong>void shuffle(CardDeck orig_deck)</strong>
+* <strong>void shuffle(CardDeck orig_deck, int repeat)</strong>
    * Generate all possible decks that could result from one shuffle.
+   * Repeat holds the number of shuffles yet to be performed.
    * Follow instrctions from HW08.
-* <strong>void interleave(CardDeck upper_deck, CardDeck lower_deck)</strong>
+* <strong>void interleave(CardDeck upper_deck, CardDeck lower_deck, int repeat)</strong>
    * Print all possible interleavings of `upper_deck` with `lower_deck`.
+   * At the end of interleave, you will recursively call `repeat_shuffle(...)` `repeat - 1`.
    * Follow instrctions from HW08.
 * <strong>void divide(CardDeck orig_deck, CardDeck* upper_decks, CardDeck* lower_decks)</strong>
    * Divide a deck into into pairs of upper and lower decks.
@@ -97,6 +101,8 @@ Note
  * The integer value to indicate the number of shuffles, (in this case `4`).
 	* `sort` is used because, the order generated can be slightly different based on implementation (However, the number of shuffle possibilities generated will ALWAYS be the same.)
 	* `output_file.txt` is the output file. You can compare this with the expected files provided.
+	
+#### You can create more functions, and structures to help perform your operations. Remember to include them within the #ifdef and #endif of the calling function.
 
 WHAT TO SUBMIT
 ==============
