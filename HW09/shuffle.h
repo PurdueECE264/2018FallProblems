@@ -1,5 +1,5 @@
 // do not modify this file
-#ifdef CARD_SHUFFLING_H
+#ifndef CARD_SHUFFLING_H
 #define CARD_SHUFFLING_H
 #include "utility.h"
 
