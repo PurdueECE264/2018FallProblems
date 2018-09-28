@@ -11,7 +11,7 @@ void divide(CardDeck orig_deck, CardDeck * upper_deck, CardDeck * lower_deck)
 {
 	// Dividing the decks into the way mentioned in Readme - as lower and upper decks
 
-	// starting from i = 1 -> size-1 copying into upper deck and lower decks
+	// starting from i = 0 -> size-1 copying into upper deck and lower decks
 		// For example: strncpy((upper_deck[i]).cards, orig_deck.cards,i+1);
 		// Update the size of the upper and lower decks after copying each element.
 			// For example: upper_deck[i].size = i+1;
