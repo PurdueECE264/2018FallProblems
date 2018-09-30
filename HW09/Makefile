@@ -8,10 +8,10 @@ SRCS = #please complete
 OBJS = $(SRCS:%.c=%.o)
 VALGRIND = valgrind --tool=memcheck --verbose --log-file
 
-TESTFALGS = #please complete
+TESTFLAGS = #please complete
 
 $(TARGET): $(OBJS)
-	$(CC) $(TESTFALGS) $(OBJS) -o $(TARGET)
+	$(CC) $(TESTFLAGS) $(OBJS) -o $(TARGET)
 
 testmemory: $(TARGET)
 	$(VALGRIND)=./valgrind.log ./shuf
