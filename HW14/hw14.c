@@ -15,7 +15,7 @@ Node * CreateNode(int val)
 #endif
 
 #ifdef TEST_LINKEDLISTCREATE
-//head: the head of the singly linkedlist.
+//source: the head of the singly linkedlist.
 //len: the length of the array.
 //arr: the array with the contents of the input file.
 
@@ -45,13 +45,14 @@ Node* Merge(Node* upper, Node* lower)
 { 
 	// Check for the base cases. (When either sub-list is NULL)
   
-	// Pick the larger between a and b, and recur appropriately.
+	// Pick the larger between upper and lower, and recur appropriately.
 	
 	// return the merged array
 } 
 #endif
 
 #ifdef TEST_SORT
+// source is the head of the list to for which MergeSort is to be performed.
 void MergeSort(Node** source) 
 { 
 	// Declare a node, to hold the current head of the source list.
