@@ -1,4 +1,4 @@
-#ifdef UTILITY_H
+#ifndef UTILITY_H
 #define UTILITY_H
 // do not modify this file
 #define MAX_SIZE 8
