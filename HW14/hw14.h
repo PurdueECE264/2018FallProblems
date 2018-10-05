@@ -10,11 +10,11 @@ typedef struct ListNode
 } Node;
 
 
-Node * CreateNode(int val);
-void LinkedListCreate(Node ** head, int len, int* arr);
+Node * CreateNode(int val)
+void LinkedListCreate(Node * * source, int len, int* arr)
 void LinkedListPrint(Node ** head);
-void MergeSort(Node** head);
-Node* SortedMerge(Node* a, Node* b);
+void MergeSort(Node** source) 
+Node* Merge(Node* upper, Node* lower) 
 void SpiltList(Node* source, Node** head1, Node** head2);
 
 #endif
