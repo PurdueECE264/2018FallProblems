@@ -15,6 +15,6 @@ void LinkedListCreate(Node ** head, int len, int* arr);
 void LinkedListPrint(Node ** head);
 void MergeSort(Node** head);
 Node* SortedMerge(Node* a, Node* b);
-void SplitList(Node* source, Node** upper, Node** lower);
+void SpiltList(Node* source, Node** head1, Node** head2);
 
 #endif
