@@ -4,7 +4,6 @@
 
 int main(int argc, char **argv){
   // check the arguments
-  // check radius and epsilon values
   // open the BMP file
   // convert to gray scale
 	// check for error in converting to gray scale
