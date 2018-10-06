@@ -8,9 +8,7 @@ int main(int argc, char **argv){
   // convert to gray scale
 	// check for error in converting to gray scale
 
-  // call adaptive threshold function
-  // check for errors after calling adaptive threshold
-	// write the adaptive threshold image to file
+	// write the gray image to file
 	// free all the images
 	return EXIT_SUCCESS;
 }
