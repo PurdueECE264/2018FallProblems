@@ -46,8 +46,8 @@ int Is_BMPHeader_Valid(BMPHeader* header, FILE *fptr) {
 	
 	//check if file_size is not equal to header->size
 	
-	//number of rows= width of file * number of bits +31
-	//multiply total value by 4
+	//row size= (width of file * number of bits +31)/32    {To know more about this check the link given }
+	//multiply row_size value by 4
 	//check if number of rows*height is the image size
 	
 	return TRUE;
