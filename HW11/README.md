@@ -26,6 +26,7 @@ x + y - x and x - x + y can lead to two different outputs.
 x + y is taken to be x as y is significantly smaller than x and thus x + y - x = 0
 
 for x - x + y, the output is y. This leads to faulty calculations and erroneous outputs. While testing, remember to use only bmp image files. 
+More information on the BMP file format can be found at https://en.wikipedia.org/wiki/BMP_file_format
 
 ## Adaptive Thresholding
 
