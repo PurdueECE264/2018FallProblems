@@ -80,9 +80,9 @@ In this exercise, you have to complete seven functions - `BMP_Open`, `Is_BMPHead
     * if the arguments != 5 then print "Wrong arguments\n" and return
     * 1st input name of the input file image. If opening up of this file fails print `Error opening BMP file`, and return `EXIT_FAILURE`.
     * 2nd input is the output image file name. 
-		* 3rd input is the value of the radius needed for Adaptive threshold.
+	* 3rd input is the value of the radius needed for Adaptive threshold.
     * 4th input is the value of epsilon. 
-		* If 3rd or 4th input fails, print "Wrong inputs\n" and return `EXIT_FAILURE`.
+	* If 3rd or 4th input fails, print "Wrong inputs\n" and return `EXIT_FAILURE`.
     * if file write fails, free memory and return EXIT_FAILURE
 
 ### Function already given to you :
