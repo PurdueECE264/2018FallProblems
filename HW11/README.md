@@ -21,11 +21,11 @@ This assignment requires you to do the following :
 
 Note: Do not use floating point variables for this assignment. Only use integers for all calculations. Do not modify the function given to you. Floating point numbers cannot represent a value precisely. This can lead to rounding off errors. For example if x is a very large number and y is significantly smaller then, 
 
-x + y - x and x - x + y can lead to two different outputs.
+`x + y - x` and `x - x + y` can lead to two different outputs.
 
-x + y is taken to be x as y is significantly smaller than x and thus x + y - x = 0
+`x + y` is taken to be `x` as `y` is significantly smaller than `x` and thus `x + y - x = 0`
 
-for x - x + y, the output is y. This leads to faulty calculations and erroneous outputs. While testing, remember to use only bmp image files. 
+for `x - x + y`, the output is `y`. This leads to faulty calculations and erroneous outputs. While testing, remember to use only bmp image files. 
 More information on the BMP file format can be found at https://en.wikipedia.org/wiki/BMP_file_format
 
 ## Adaptive Thresholding
