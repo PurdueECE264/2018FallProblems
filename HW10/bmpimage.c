@@ -1,56 +1,43 @@
 #include "bmpimage.h"
-// Modifyall functions in this file
+// Modify all functions in this file
+
+
+
+#ifdef TEST_HEADERVALID
+
 /* check whether a header is valid or not
  * assume that header has been read from fptr
  * the position of the indicator of fptr is not certain
  * could be at the beginning of the file, end of the file or
  * anywhere in the file
- * note that the check is only for this exercise/assignment
- * in general, the format is more complicated
+ * note that the check is only for this assignment
+ * in general, the format is more complicated and requires more checks
  */
 
-#ifdef TEST_HEADERVALID
-
 int Is_BMPHeader_Valid(BMPHeader* header, FILE *fptr) {
-  // Make sure this is a BMP file
-        //Check for header->type
-	
-	// check the offset(header->offset)from beginning of file to image data
-	// which is essentially the size of the BMP header
-	// known as BMP_HEADER_SIZE for this exercise/assignment
+		// Make sure this is a BMP file -  magic number
+		// skip the two unused reserved fields
 
-	// check for DIB header size == DIB_HEADER_SIZE
-	// For this exercise/assignment
-	// use header->DIB_header_size 
-	
-	// Make sure there is only one image plane
-	//use header->planes
-	
-	// Make sure there is no compression
-	
-	// ncolours and importantcolours should be 0
+		// check the offset from beginning of file to image data
+		// essentially the size of the BMP header
+		// BMP_HEADER_SIZE for this exercise/assignment
+		// printf("header->offset %d\n",header->offset );
+		
+	  // check the DIB header size == DIB_HEADER_SIZE
+		// Make sure there is only one image plane
+		// Make sure there is no compression
+		
+		// skip the test for xresolution, yresolution
+		
+		// ncolours and importantcolours should be 0
+		// Make sure we are getting 24 bits per pixel
+		// only for this assignment
+		// extra check for file size, image size
+		// based on bits, width, and height
+		
+		// check out the link: https://en.wikipedia.org/wiki/BMP_file_format#Pixel_storage
 
-	// Make sure we are getting 24 bits per pixel
-	// or 16 bits per pixel
-	// only for this assignment
-	
-	// check for file size, image size
-	// based on bits, width, and height
-	//check for imagesize using size-offset=imagesize, each element is a part of the header structure, so use -> accordingly
-
-	//use ftell(fptr) for file position(file_pos)
-	//check if input file can be read: if (fseek(fptr, 0, SEEK_END) != 0)
-       
-	//use ftell(fptr) for file file size(file_size)
-	//check (fseek(fptr, file_pos, SEEK_SET) != 0) for input file reading check
-	
-	//check if file_size is not equal to header->size
-	
-	//row size= (width of file * number of bits +31)/32    {To know more about this check the link given }
-	//multiply row_size value by 4
-	//check if number of rows*height is the image size
-	
-	return TRUE;
+		return TRUE;
 }
 
 #endif
@@ -83,9 +70,6 @@ BMPImage *BMP_Open(const char *filename) {
 	//Read the first 54 bytes of the source into the header
 
 	int read_size = fread(&(bmpImage->header), sizeof(BMPHeader), 1, fptr);
-
-	//Compute data size, width, height, and bytes per pixel;
-	//check for any error while reading
 	
 	//check if the header is valid
 	

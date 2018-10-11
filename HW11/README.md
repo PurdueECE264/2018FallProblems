@@ -60,7 +60,7 @@ Example: Suppose we are doing adaptive thresholding for the following 6x6 image 
 
 ![Grid](jpgfiles/exampleGrid.png)
 
-The pixel at (row=3, col=2)(first pixel at row=0,col=0) currently has intensity value of 80. The neighborhood (radius=1) consists of pixels having intensity values 45, 50, 55, 75, 80, 85, 145, 135, and 125. The average of those is 88⅓. Since 80 ≤ (88⅓-2) (epsilon=2), the pixel at (col=2, row=3) shall be black.
+The pixel at (row=3, col=2)(first pixel at row=0,col=0) currently has intensity value of 80. The neighborhood (radius=1) consists of pixels having intensity values 45, 50, 55, 75, 80, 85, 145, 135, and 125. The average of those is 88⅓. Since 80 < (88⅓-2) (epsilon=2), the pixel at (col=2, row=3) shall be black.
 
 Always calculate the threshold based on only the values in the input image.
 
@@ -127,4 +127,4 @@ zip HW11.zip hw11.c bmpfunc.c bmpimage.c
 <strong>You will not get any credits if the submitted file is not zipped</strong>
 
 # Test flags to be included in Makefile:
--DTEST_MAINFUNC -DTEST_FUNCGIVEN -DTEST_IMGTOGRAY -DTEST_ADAPTIVETHRESHOLDING -DTEST_HEADERVALID -DTEST_BMPOPENFILE -DTEST_BMPWRITEFUNC -DTEST_BMPFREEFUNC
+-DTEST_MAIN -DTEST_FUNCGIVEN -DTEST_IMGTOGRAY -DTEST_ADAPTIVETHRESHOLDING -DTEST_HEADERVALID -DTEST_BMPOPENFILE -DTEST_WRITEFUNC -DTEST_BMPFREEFUNC
