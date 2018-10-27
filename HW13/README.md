@@ -32,7 +32,7 @@ The base function for your resursive calls.
 Check for base cases, to return from the call stack. The `SpiltList()`, and `LinkedListPrint()` is called from this function.
 Remeber to call `LinkedListPrint()`, after `SpiltList()` (Mentioned in the comments).
 
-**SpiltList()**
+**SplitList()**
 The function used to find the midpoint of the list.
 #### `1` `2` `3` `4` should be split into `1` `2` and `3` `4`.
 #### `1` `2` `3` `4` `5` should be split into `1` `2` `3` and `4` `5`.
