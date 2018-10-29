@@ -8,7 +8,7 @@
 void LinkedListPrint(Node * head)
 {
 
-	Node *temp = *head;
+	Node *temp = head;
 
 	while(temp!=NULL)
 	{
@@ -18,7 +18,7 @@ void LinkedListPrint(Node * head)
 		}
 		else
 		{
-			printf("%d",temp->value);
+			printf("%d\n",temp->value);
 		}
 		temp=temp->next;
 	}
