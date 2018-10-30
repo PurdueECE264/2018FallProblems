@@ -102,7 +102,16 @@ This function prints the given tree in in-order way. This function is only if yo
 **BinaryTreePostOrderPrint(treeNode \* tn)**
 This function prints the given tree in pre-order way. This function is only if you want to see the structure, you may/may not use this functions.
 
-#### Your Makefile should include
+#### Expected Files
+The expected file have been generated with the following commands:
+1. ./hw16 inputs/tree1/test1.txt inputs/tree2/test1.txt > expected/expected1.txt
+2. ./hw16 inputs/tree1/test2.txt inputs/tree2/test2.txt > expected/expected2.txt
+3. ./hw16 inputs/tree1/test3.txt inputs/tree2/test3.txt > expected/expected3.txt
+4. ./hw16 inputs/tree1/test4.txt inputs/tree2/test4.txt > expected/expected4.txt
+5. ./hw16 inputs/tree1/test5.txt inputs/tree2/test5.txt > expected/expected5.txt
+6. ./hw16 inputs/tree1/test6.txt inputs/tree2/test6.txt > expected/expected6.txt
+
+#### Your Makefile can include
 
 ```
 <your executable> inputs/tree1/test(x).txt inputs/tree2/test(x).txt > output(x).txt
