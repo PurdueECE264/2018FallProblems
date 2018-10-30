@@ -5,7 +5,7 @@
 
 **Please read the entire file before you ask any question.**
 
-In this assignment, you will have to find the distance of a node from the root node in a Binary Search Tree (BST). In order to achieve that, you need to complete two tasks. First, you need to create a BST with the given preorder traversal and then for a given number, you will find the distance of the node,from the root, with same value or report if such a node does not exist in the tree.
+ In this assignment, you will have to find the distance of a node from the root node in a Binary Search Tree (BST). In order to achieve that, you need to complete two tasks. First, you need to create a BST with the given preorder traversal and then for a given number, you will find the distance of the node,from the root, with same value or report if such a node does not exist in the tree.
 
 # Concepts
 * BINARY SEARCH TREE: A binary search tree is a binary tree and satisﬁes the following conditions:
