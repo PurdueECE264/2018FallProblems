@@ -52,7 +52,7 @@ treeNode * CreateTree(int *array, int index, int length)
   }
 	treeNode *newNode ;
 
-	newNode = malloc(sizeof(newNode));
+	newNode = malloc(sizeof(treeNode));
 	if (newNode == NULL)
 	{
 		//memory allocation failed
@@ -83,7 +83,7 @@ treeNode *BinaryTreeCreate(char *filename)
 	{
 		len++;
 	}
-  int *array = malloc(sizeof(array)* len);
+  int *array = malloc(sizeof(int)* len);
   if(array == NULL)
   {
     fclose(fptr);
@@ -97,7 +97,8 @@ treeNode *BinaryTreeCreate(char *filename)
 		len++;
 	}
   fclose(fptr);
-	treeNode *root = CreateTree(array,0 , len);
+	treeNode *root = CreateTree(array, 0 , len);
 
+	free(array);
 	return root;
 }
