@@ -21,11 +21,12 @@ This assignment requires you to do the following :
 
 Note: Do not use floating point variables for this assignment. Only use integers for all calculations. Do not modify the function given to you. Floating point numbers cannot represent a value precisely. This can lead to rounding off errors. For example if x is a very large number and y is significantly smaller then, 
 
-x + y - x and x - x + y can lead to two different outputs.
+`x + y - x` and `x - x + y` can lead to two different outputs.
 
-x + y is taken to be x as y is significantly smaller than x and thus x + y - x = 0
+`x + y` is taken to be `x` as `y` is significantly smaller than `x` and thus `x + y - x = 0`
 
-for x - x + y, the output is y. This leads to faulty calculations and erroneous outputs. While testing, remember to use only bmp image files. 
+for `x - x + y`, the output is `y`. This leads to faulty calculations and erroneous outputs. While testing, remember to use only bmp image files. 
+More information on the BMP file format can be found at https://en.wikipedia.org/wiki/BMP_file_format
 
 ## Adaptive Thresholding
 
@@ -59,7 +60,7 @@ Example: Suppose we are doing adaptive thresholding for the following 6x6 image 
 
 ![Grid](jpgfiles/exampleGrid.png)
 
-The pixel at (row=3, col=2)(first pixel at row=0,col=0) currently has intensity value of 80. The neighborhood (radius=1) consists of pixels having intensity values 45, 50, 55, 75, 80, 85, 145, 135, and 125. The average of those is 88⅓. Since 80 ≤ (88⅓-2) (epsilon=2), the pixel at (col=2, row=3) shall be black.
+The pixel at (row=3, col=2)(first pixel at row=0,col=0) currently has intensity value of 80. The neighborhood (radius=1) consists of pixels having intensity values 45, 50, 55, 75, 80, 85, 145, 135, and 125. The average of those is 88⅓. Since 80 < (88⅓-2) (epsilon=2), the pixel at (col=2, row=3) shall be black.
 
 Always calculate the threshold based on only the values in the input image.
 
@@ -78,8 +79,10 @@ In this exercise, you have to complete seven functions - `BMP_Open`, `Is_BMPHead
 7. `main()` - In this assignment, your main function has the following the specifications.
     * if the arguments != 5 then print "Wrong arguments\n" and return
     * 1st input name of the input file image. If opening up of this file fails print `Error opening BMP file`, and return `EXIT_FAILURE`.
-    * 2nd input is the output image file name. 4. 3rd input is the value of the radius needed for Adaptive threshold.
-    * 4th input is the value of epsilon. If 3rd or 4th input fails, print "Wrong inputs\n" and return `EXIT_FAILURE`.
+    * 2nd input is the output image file name. 
+	* 3rd input is the value of the radius needed for Adaptive threshold.
+    * 4th input is the value of epsilon. 
+	* If 3rd or 4th input fails, print "Wrong inputs\n" and return `EXIT_FAILURE`.
     * if file write fails, free memory and return EXIT_FAILURE
 
 ### Function already given to you :
@@ -124,4 +127,4 @@ zip HW11.zip hw11.c bmpfunc.c bmpimage.c
 <strong>You will not get any credits if the submitted file is not zipped</strong>
 
 # Test flags to be included in Makefile:
--DTEST_MAINFUNC -DTEST_FUNCGIVEN -DTEST_IMGTOGRAY -DTEST_ADAPTIVETHRESHOLDING -DTEST_HEADERVALID -DTEST_BMPOPENFILE -DTEST_BMPWRITEFUNC -DTEST_BMPFREEFUNC
+-DTEST_MAIN -DTEST_FUNCGIVEN -DTEST_IMGTOGRAY -DTEST_ADAPTIVETHRESHOLDING -DTEST_HEADERVALID -DTEST_BMPOPENFILE -DTEST_WRITEFUNC -DTEST_BMPFREEFUNC

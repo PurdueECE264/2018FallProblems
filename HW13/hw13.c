@@ -60,7 +60,7 @@ void LinkedListCreate(Node * * source, int len, int* arr)
 // source is the Node corresponding to the head of the list
 // head1 is the list corresponding upper half of the list. (After Partition)
 // head2 is the list corresponding lower half of the list. (After Partition)
-void SpiltList(Node* source, Node** head1, Node** head2) 
+void SplitList(Node* source, Node** head1, Node** head2) 
 { 
 	// Find the mid point of the list.
 	

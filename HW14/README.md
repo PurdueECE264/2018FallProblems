@@ -56,7 +56,7 @@ diff output<num>.txt expected/expected<num>.txt
 #### Flags to include
 Please also include the following define flags for your Makefile.
 
-```bash
+```
 
 -DTEST_MAIN -DTEST_CREATENODE -DTEST_LINKEDLISTCREATE -DTEST_SPLIT -DTEST_MERGE -DTEST_SORT -DLINKEDLIST
 

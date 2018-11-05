@@ -24,6 +24,8 @@ x + y is taken to be x as y is significantly smaller than x and thus x + y - x =
 
 for x - x + y, the output is y. This leads to faulty calculations and erroneous outputs. While testing, remember to use only bmp image files. 
 
+Since you will be dealing with BMP image file format, more details can be found at: https://en.wikipedia.org/wiki/BMP_file_format
+
 # Grayscale Conversion
 Let suppose we have an image :
 

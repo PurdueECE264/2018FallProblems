@@ -32,7 +32,7 @@ void LinkedListCreate(Node * * source, int len, int* arr)
 // head1 is the head of the upper sub-list.
 // head2 is the head of the lower sub-list.
 
-void SpiltList(Node* source, Node** head1, Node** head2)
+void SplitList(Node* source, Node** head1, Node** head2)
 {
 	// Refer HW13
 } 
