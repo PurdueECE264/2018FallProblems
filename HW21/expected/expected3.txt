@@ -1,0 +1,4 @@
+1e1 01l01
+1o01h1r01w1d0000
+numChar = 12
+hello world

@@ -1,0 +1,213 @@
+1x1D1F01T001S1^01M180161P00001\1k1[01]1"13000001o01n1.191L01A01_1>1'001N1;001	0001d0001i1p101J1C001-01g0001a1w1+1B0151q0001y01f1(1)0000001u1:1E1/00141j1&00012001h01t01l1
+1,01b1I1H01X1Y1Q001W01R01=000001m1c01s0001 111O1G1z01*1V01U1K00017001v001}1{001r01e0000
+numChar = 24705
+Binary heap
+From Wikipedia, the free encyclopedia
+Binary Heap
+Type	tree
+Time complexity in big O notation
+Algorithm		Average	Worst case
+Space		O(n)	O(n)
+Search		O(n)	O(n)
+Insert		O(1)	O(log n)
+Delete		O(log n)	O(log n)
+Peek		O(1)	O(1)
+
+Example of a complete binary max heap
+
+Example of a complete binary min heap
+A binary heap is a heap data structure that takes the form of a binary tree. Binary heaps are a common way of implementing priority queues.[1]:162163 The binary heap was introduced by J. W. J. Williams in 1964, as a data structure for heapsort.[2]
+A binary heap is defined as a binary tree with two additional constraints:[3]
+Shape property: a binary heap is a complete binary tree; that is, all levels of the tree, except possibly the last one (deepest) are fully filled, and, if the last level of the tree is not complete, the nodes of that level are filled from left to right.
+Heap property: the key stored in each node is either greater than or equal to () or less than or equal to () the keys in the node's children, according to some total order.
+Heaps where the parent key is greater than or equal to () the child keys are called max-heaps; those where it is less than or equal to () are called min-heaps. Efficient (logarithmic time) algorithms are known for the two operations needed to implement a priority queue on a binary heap: inserting an element, and removing the smallest or largest element from a min-heap or max-heap, respectively. Binary heaps are also commonly employed in the heapsort sorting algorithm, which is an in-place algorithm owing to the fact that binary heaps can be implemented as an implicit data structure, storing keys in an array and using their relative positions within that array to represent child-parent relationships.
+Contents  [hide] 
+1	Heap operations
+1.1	Insert
+1.2	Extract
+2	Building a heap
+3	Heap implementation
+4	Derivation of index equations
+4.1	Child nodes
+4.2	Parent node
+5	Related structures
+6	Summary of running times
+7	See also
+8	References
+9	External links
+Heap operations[edit]
+Both the insert and remove operations modify the heap to conform to the shape property first, by adding or removing from the end of the heap. Then the heap property is restored by traversing up or down the heap. Both operations take O(log n) time.
+Insert[edit]
+To add an element to a heap we must perform an up-heap operation (also known as bubble-up, percolate-up, sift-up, trickle-up, heapify-up, or cascade-up), by following this algorithm:
+Add the element to the bottom level of the heap.
+Compare the added element with its parent; if they are in the correct order, stop.
+If not, swap the element with its parent and return to the previous step.
+The number of operations required depends only on the number of levels the new element must rise to satisfy the heap property, thus the insertion operation has a worst-case time complexity of O(log n) but an average-case complexity of O(1).[4]
+As an example of binary heap insertion, say we have a max-heap
+Heap add step1.svg
+and we want to add the number 15 to the heap. We first place the 15 in the position marked by the X. However, the heap property is violated since 15 > 8, so we need to swap the 15 and the 8. So, we have the heap looking as follows after the first swap:
+Heap add step2.svg
+However the heap property is still violated since 15 > 11, so we need to swap again:
+Heap add step3.svg
+which is a valid max-heap. There is no need to check the left child after this final step: at the start, the max-heap was valid, meaning 11 > 5; if 15 > 11, and 11 > 5, then 15 > 5, because of the transitive relation.
+Extract[edit]
+The procedure for deleting the root from the heap (effectively extracting the maximum element in a max-heap or the minimum element in a min-heap) and restoring the properties is called down-heap (also known as bubble-down, percolate-down, sift-down, trickle down, heapify-down, cascade-down, and extract-min/max).
+Replace the root of the heap with the last element on the last level.
+Compare the new root with its children; if they are in the correct order, stop.
+If not, swap the element with one of its children and return to the previous step. (Swap with its smaller child in a min-heap and its larger child in a max-heap.)
+So, if we have the same max-heap as before
+Heap delete step0.svg
+We remove the 11 and replace it with the 4.
+Heap remove step1.svg
+Now the heap property is violated since 8 is greater than 4. In this case, swapping the two elements, 4 and 8, is enough to restore the heap property and we need not swap elements further:
+Heap remove step2.svg
+The downward-moving node is swapped with the larger of its children in a max-heap (in a min-heap it would be swapped with its smaller child), until it satisfies the heap property in its new position. This functionality is achieved by the Max-Heapify function as defined below in pseudocode for an array-backed heap A of length heap_length[A]. Note that "A" is indexed starting at 1.
+Max-Heapify (A, i):
+    left  2*i //  means "assignment"
+    right  2*i + 1
+    largest  i
+    
+    if left  heap_length[A] and A[left] > A[largest] then:
+        largest  left
+    if right  heap_length[A] and A[right] > A[largest] then:
+        largest  right
+    
+    if largest  i then:
+        swap A[i] and A[largest]
+        Max-Heapify(A, largest)
+For the above algorithm to correctly re-heapify the array, the node at index i and its two direct children must violate the heap property. If they do not, the algorithm will fall through with no change to the array. The down-heap operation (without the preceding swap) can also be used to modify the value of the root, even when an element is not being deleted. In the pseudocode above, what starts with // is a comment. Note that A is an array (or list) that starts being indexed from 1 up to length(A), according to the pseudocode.
+In the worst case, the new root has to be swapped with its child on each level until it reaches the bottom level of the heap, meaning that the delete operation has a time complexity relative to the height of the tree, or O(log n).
+Building a heap[edit]
+Building a heap from an array of n input elements can be done by starting with an empty heap, then successively inserting each element. This approach, called Williams method after the inventor of binary heaps, is easily seen to run in O(n log n) time: it performs n insertions at O(log n) cost each.[a]
+However, Williams method is suboptimal. A faster method (due to Floyd[5]) starts by arbitrarily putting the elements on a binary tree, respecting the shape property (the tree could be represented by an array, see below). Then starting from the lowest level and moving upwards, sift the root of each subtree downward as in the deletion algorithm until the heap property is restored. More specifically if all the subtrees starting at some height {\displaystyle h} h have already been heapified (the bottommost level corresponding to {\displaystyle h=0} h=0), the trees at height {\displaystyle h+1} h+1 can be heapified by sending their root down along the path of maximum valued children when building a max-heap, or minimum valued children when building a min-heap. This process takes {\displaystyle O(h)} O(h) operations (swaps) per node. In this method most of the heapification takes place in the lower levels. Since the height of the heap is {\displaystyle \lfloor \log n\rfloor } {\displaystyle \lfloor \log n\rfloor }, the number of nodes at height {\displaystyle h} h is {\displaystyle \leq {\frac {2^{\lfloor \log n\rfloor }}{2^{h}}}\leq {\frac {n}{2^{h}}}} {\displaystyle \leq {\frac {2^{\lfloor \log n\rfloor }}{2^{h}}}\leq {\frac {n}{2^{h}}}}. Therefore, the cost of heapifying all subtrees is:
+{\displaystyle {\begin{aligned}\sum _{h=0}^{\lfloor \log n\rfloor }{\frac {n}{2^{h}}}O(h)&=O\left(n\sum _{h=0}^{\lfloor \log n\rfloor }{\frac {h}{2^{h}}}\right)\\&=O\left(n\sum _{h=0}^{\infty }{\frac {h}{2^{h}}}\right)\\&=O(n)\end{aligned}}} {\displaystyle {\begin{aligned}\sum _{h=0}^{\lfloor \log n\rfloor }{\frac {n}{2^{h}}}O(h)&=O\left(n\sum _{h=0}^{\lfloor \log n\rfloor }{\frac {h}{2^{h}}}\right)\\&=O\left(n\sum _{h=0}^{\infty }{\frac {h}{2^{h}}}\right)\\&=O(n)\end{aligned}}}
+[b] This uses the fact that the given infinite series {\textstyle \sum _{i=0}^{\infty }i/2^{i}} {\textstyle \sum _{i=0}^{\infty }i/2^{i}} converges.
+The exact value of the above (the worst-case number of comparisons during the heap construction) is known to be equal to:
+{\displaystyle 2n-2s_{2}(n)-e_{2}(n)}  2 n - 2 s_2 (n) - e_2 (n) ,[6]
+where s2(n) is the sum of all digits of the binary representation of n and e2(n) is the exponent of 2 in the prime factorization of n.
+The Build-Max-Heap function that follows, converts an array A which stores a complete binary tree with n nodes to a max-heap by repeatedly using Max-Heapify in a bottom up manner. It is based on the observation that the array elements indexed by floor(n/2) + 1, floor(n/2) + 2, ..., n are all leaves for the tree (assuming that indices start at 1), thus each is a one-element heap. Build-Max-Heap runs Max-Heapify on each of the remaining tree nodes.
+Build-Max-Heap (A):
+    heap_length[A]  length[A]
+    
+    for each index i from floor(length[A]/2) downto 1 do:
+        Max-Heapify(A, i)
+Heap implementation[edit]
+
+A small complete binary tree stored in an array
+
+Comparison between a binary heap and an array implementation.
+Heaps are commonly implemented with an array. Any binary tree can be stored in an array, but because a binary heap is always a complete binary tree, it can be stored compactly. No space is required for pointers; instead, the parent and children of each node can be found by arithmetic on array indices. These properties make this heap implementation a simple example of an implicit data structure or Ahnentafel list. Details depend on the root position, which in turn may depend on constraints of a programming language used for implementation, or programmer preference. Specifically, sometimes the root is placed at index 1, in order to simplify arithmetic.
+Let n be the number of elements in the heap and i be an arbitrary valid index of the array storing the heap. If the tree root is at index 0, with valid indices 0 through n  1, then each element a at index i has
+children at indices 2i + 1 and 2i + 2
+its parent at index floor((i  1)  2).
+Alternatively, if the tree root is at index 1, with valid indices 1 through n, then each element a at index i has
+children at indices 2i and 2i +1
+its parent at index floor(i  2).
+This implementation is used in the heapsort algorithm, where it allows the space in the input array to be reused to store the heap (i.e. the algorithm is done in-place). The implementation is also useful for use as a Priority queue where use of a dynamic array allows insertion of an unbounded number of items.
+The upheap/downheap operations can then be stated in terms of an array as follows: suppose that the heap property holds for the indices b, b+1, ..., e. The sift-down function extends the heap property to b1, b, b+1, ..., e. Only index i = b1 can violate the heap property. Let j be the index of the largest child of a[i] (for a max-heap, or the smallest child for a min-heap) within the range b, ..., e. (If no such index exists because 2i > e then the heap property holds for the newly extended range and nothing needs to be done.) By swapping the values a[i] and a[j] the heap property for position i is established. At this point, the only problem is that the heap property might not hold for index j. The sift-down function is applied tail-recursively to index j until the heap property is established for all elements.
+The sift-down function is fast. In each step it only needs two comparisons and one swap. The index value where it is working doubles in each iteration, so that at most log2 e steps are required.
+For big heaps and using virtual memory, storing elements in an array according to the above scheme is inefficient: (almost) every level is in a different page. B-heaps are binary heaps that keep subtrees in a single page, reducing the number of pages accessed by up to a factor of ten.[7]
+The operation of merging two binary heaps takes (n) for equal-sized heaps. The best you can do is (in case of array implementation) simply concatenating the two heap arrays and build a heap of the result.[8] A heap on n elements can be merged with a heap on k elements using O(log n log k) key comparisons, or, in case of a pointer-based implementation, in O(log n log k) time.[9] An algorithm for splitting a heap on n elements into two heaps on k and n-k elements, respectively, based on a new view of heaps as an ordered collections of subheaps was presented in.[10] The algorithm requires O(log n * log n) comparisons. The view also presents a new and conceptually simple algorithm for merging heaps. When merging is a common task, a different heap implementation is recommended, such as binomial heaps, which can be merged in O(log n).
+Additionally, a binary heap can be implemented with a traditional binary tree data structure, but there is an issue with finding the adjacent element on the last level on the binary heap when adding an element. This element can be determined algorithmically or by adding extra data to the nodes, called "threading" the treeinstead of merely storing references to the children, we store the inorder successor of the node as well.
+It is possible to modify the heap structure to allow extraction of both the smallest and largest element in {\displaystyle O} O {\displaystyle (\log n)} (\log n) time.[11] To do this, the rows alternate between min heap and max heap. The algorithms are roughly the same, but, in each step, one must consider the alternating rows with alternating comparisons. The performance is roughly the same as a normal single direction heap. This idea can be generalised to a min-max-median heap.
+Derivation of index equations[edit]
+In an array-based heap, the children and parent of a node can be located via simple arithmetic on the node's index. This section derives the relevant equations for heaps with their root at index 0, with additional notes on heaps with their root at index 1.
+To avoid confusion, we'll define the level of a node as its distance from the root, such that the root itself occupies level 0.
+Child nodes[edit]
+For a general node located at index {\displaystyle i} i (beginning from 0), we will first derive the index of its right child, {\displaystyle {\text{right}}=2i+2} \text{right} = 2i + 2.
+Let node {\displaystyle i} i be located in level {\displaystyle L} L, and note that any level {\displaystyle l} l contains exactly {\displaystyle 2^{l}} 2^l nodes. Furthermore, there are exactly {\displaystyle 2^{l+1}-1} 2^{l + 1} - 1 nodes contained in the layers up to and including layer {\displaystyle l} l (think of binary arithmetic; 0111...111 = 1000...000 - 1). Because the root is stored at 0, the {\displaystyle k} kth node will be stored at index {\displaystyle (k-1)} (k - 1). Putting these observations together yields the following expression for the index of the last node in layer l.
+{\displaystyle {\text{last}}(l)=(2^{l+1}-1)-1=2^{l+1}-2} \text{last}(l) = (2^{l + 1} - 1) - 1 = 2^{l + 1} - 2
+Let there be {\displaystyle j} j nodes after node {\displaystyle i} i in layer L, such that
+{\displaystyle {\begin{alignedat}{2}i=&\quad {\text{last}}(L)-j\\=&\quad (2^{L+1}-2)-j\\\end{alignedat}}} \begin{alignat}{2}
+i = & \quad \text{last}(L) - j\\
+  = & \quad (2^{L + 1} -2) - j\\
+\end{alignat}
+Each of these {\displaystyle j} j nodes must have exactly 2 children, so there must be {\displaystyle 2j} 2j nodes separating {\displaystyle i} i's right child from the end of its layer ( {\displaystyle L+1} L + 1).
+{\displaystyle {\begin{alignedat}{2}{\text{right}}=&\quad {\text{last(L + 1)}}-2j\\=&\quad (2^{L+2}-2)-2j\\=&\quad 2(2^{L+1}-2-j)+2\\=&\quad 2i+2\end{alignedat}}} \begin{alignat}{2}
+\text{right} = & \quad \text{last(L + 1)} -2j\\
+             = & \quad (2^{L + 2} -2) -2j\\
+             = & \quad 2(2^{L + 1} -2 -j) + 2\\
+             = & \quad 2i + 2
+\end{alignat}
+As required.
+Noting that the left child of any node is always 1 place before its right child, we get {\displaystyle {\text{left}}=2i+1} \text{left} = 2i + 1.
+If the root is located at index 1 instead of 0, the last node in each level is instead at index {\displaystyle 2^{l+1}-1} 2^{l + 1} - 1. Using this throughout yields {\displaystyle {\text{left}}=2i} \text{left} = 2i and {\displaystyle {\text{right}}=2i+1} \text{right} = 2i + 1 for heaps with their root at 1.
+Parent node[edit]
+Every node is either the left or right child of its parent, so we know that either of the following is true.
+{\displaystyle i=2\times ({\text{parent}})+1} i = 2 \times (\text{parent}) + 1
+{\displaystyle i=2\times ({\text{parent}})+2} i = 2 \times (\text{parent}) + 2
+Hence,
+{\displaystyle {\text{parent}}={\frac {i-1}{2}}{\textbf {or}}{\frac {i-2}{2}}} \text{parent} = \frac{i - 1}{2} \textbf{ or } \frac{i - 2}{2}
+Now consider the expression {\displaystyle \left\lfloor {\dfrac {i-1}{2}}\right\rfloor } \left\lfloor \dfrac{i - 1}{2} \right\rfloor.
+If node {\displaystyle i} i is a left child, this gives the result immediately, however, it also gives the correct result if node {\displaystyle i} i is a right child. In this case, {\displaystyle (i-2)} (i - 2) must be even, and hence {\displaystyle (i-1)} (i - 1) must be odd.
+{\displaystyle {\begin{alignedat}{2}\left\lfloor {\dfrac {i-1}{2}}\right\rfloor =&\quad \left\lfloor {\dfrac {i-2}{2}}+{\dfrac {1}{2}}\right\rfloor \\=&\quad {\frac {i-2}{2}}\\=&\quad {\text{parent}}\end{alignedat}}} \begin{alignat}{2}
+\left\lfloor \dfrac{i - 1}{2} \right\rfloor = & \quad \left\lfloor \dfrac{i - 2}{2} + \dfrac{1}{2} \right\rfloor\\
+= & \quad \frac{i - 2}{2}\\
+= & \quad \text{parent}
+\end{alignat}
+Therefore, irrespective of whether a node is a left or right child, its parent can be found by the expression:
+{\displaystyle {\text{parent}}=\left\lfloor {\dfrac {i-1}{2}}\right\rfloor } \text{parent} = \left\lfloor \dfrac{i - 1}{2} \right\rfloor
+Related structures[edit]
+Since the ordering of siblings in a heap is not specified by the heap property, a single node's two children can be freely interchanged unless doing so violates the shape property (compare with treap). Note, however, that in the common array-based heap, simply swapping the children might also necessitate moving the children's sub-tree nodes to retain the heap property.
+The binary heap is a special case of the d-ary heap in which d = 2.
+Summary of running times[edit]
+In the following time complexities[12] O(f) is an asymptotic upper bound and (f) is an asymptotically tight bound (see Big O notation). Function names assume a min-heap.
+Operation	Binary[12]	Leftist	Binomial[12]	Fibonacci[12][13]	Pairing[14]	Brodal[15][c]	Rank-pairing[17]	Strict Fibonacci[18]
+find-min	(1)	(1)	(log n)	(1)	(1)	(1)	(1)	(1)
+delete-min	(log n)	(log n)	(log n)	O(log n)[d]	O(log n)[d]	O(log n)	O(log n)[d]	O(log n)
+insert	O(log n)	(log n)	(1)[d]	(1)	(1)	(1)	(1)	(1)
+decrease-key	(log n)	(n)	(log n)	(1)[d]	o(log n)[d][e]	(1)	(1)[d]	(1)
+merge	(n)	(log n)	O(log n)[f]	(1)	(1)	(1)	(1)	(1)
+Jump up ^ In fact, this procedure can be shown to take (n log n) time in the worst case, meaning that n log n is also an asymptotic lower bound on the complexity.[1]:167 In the average case (averaging over all permutations of n inputs), though, the method takes linear time.[5]
+Jump up ^ This does not mean that sorting can be done in linear time since building a heap is only the first step of the heapsort algorithm.
+Jump up ^ Brodal and Okasaki later describe a persistent variant with the same bounds except for decrease-key, which is not supported. Heaps with n elements can be constructed bottom-up in O(n).[16]
+^ Jump up to: a b c d e f g Amortized time.
+Jump up ^ Lower bound of {\displaystyle \Omega (\log \log n),} {\displaystyle \Omega (\log \log n),}[19] upper bound of {\displaystyle O(2^{2{\sqrt {\log \log n}}}).} {\displaystyle O(2^{2{\sqrt {\log \log n}}}).}[20]
+Jump up ^ n is the size of the larger heap.
+See also[edit]
+Heap
+Heapsort
+References[edit]
+^ Jump up to: a b Cormen, Thomas H.; Leiserson, Charles E.; Rivest, Ronald L.; Stein, Clifford (2009) [1990]. Introduction to Algorithms (3rd ed.). MIT Press and McGraw-Hill. ISBN 0-262-03384-4.
+Jump up ^ Williams, J. W. J. (1964), "Algorithm 232 - Heapsort", Communications of the ACM, 7 (6): 347348, doi:10.1145/512274.512284
+Jump up ^ eEL,CSA_Dept,IISc,Bangalore, "Binary Heaps", Data Structures and Algorithms
+Jump up ^ http://wcipeg.com/wiki/Binary_heap
+^ Jump up to: a b Hayward, Ryan; McDiarmid, Colin (1991). "Average Case Analysis of Heap Building by Repeated Insertion" (PDF). J. Algorithms. 12: 126153.
+Jump up ^ Suchenek, Marek A. (2012), "Elementary Yet Precise Worst-Case Analysis of Floyd's Heap-Construction Program", Fundamenta Informaticae, IOS Press, 120 (1): 7592, doi:10.3233/FI-2012-751.
+Jump up ^ Poul-Henning Kamp. "You're Doing It Wrong". ACM Queue. June 11, 2010.
+Jump up ^ Chris L. Kuszmaul. "binary heap". Dictionary of Algorithms and Data Structures, Paul E. Black, ed., U.S. National Institute of Standards and Technology. 16 November 2009.
+Jump up ^ J.-R. Sack and T. Strothotte "An Algorithm for Merging Heaps", Acta Informatica 22, 171-186 (1985).
+Jump up ^ . J.-R. Sack and T. Strothotte "A characterization of heaps and its applications" Information and Computation Volume 86, Issue 1, May 1990, Pages 6986.
+Jump up ^ Atkinson, M.D.; J.-R. Sack; N. Santoro & T. Strothotte (1 October 1986). "Min-max heaps and generalized priority queues" (PDF). Programming techniques and Data structures. Comm. ACM, 29(10): 9961000.
+^ Jump up to: a b c d Cormen, Thomas H.; Leiserson, Charles E.; Rivest, Ronald L. (1990). Introduction to Algorithms (1st ed.). MIT Press and McGraw-Hill. ISBN 0-262-03141-8.
+Jump up ^ Fredman, Michael Lawrence; Tarjan, Robert E. (July 1987). "Fibonacci heaps and their uses in improved network optimization algorithms" (PDF). Journal of the Association for Computing Machinery. 34 (3): 596615. doi:10.1145/28869.28874.
+Jump up ^ Iacono, John (2000), "Improved upper bounds for pairing heaps", Proc. 7th Scandinavian Workshop on Algorithm Theory (PDF), Lecture Notes in Computer Science, 1851, Springer-Verlag, pp. 6377, arXiv:1110.4428Freely accessible, doi:10.1007/3-540-44985-X_5, ISBN 3-540-67690-2
+Jump up ^ Brodal, Gerth S. (1996), "Worst-Case Efficient Priority Queues" (PDF), Proc. 7th Annual ACM-SIAM Symposium on Discrete Algorithms, pp. 5258
+Jump up ^ Goodrich, Michael T.; Tamassia, Roberto (2004). "7.3.6. Bottom-Up Heap Construction". Data Structures and Algorithms in Java (3rd ed.). pp. 338341. ISBN 0-471-46983-1.
+Jump up ^ Haeupler, Bernhard; Sen, Siddhartha; Tarjan, Robert E. (November 2011). "Rank-pairing heaps" (PDF). SIAM J. Computing: 14631485. doi:10.1137/100785351.
+Jump up ^ Brodal, G. S. L.; Lagogiannis, G.; Tarjan, R. E. (2012). Strict Fibonacci heaps (PDF). Proceedings of the 44th symposium on Theory of Computing - STOC '12. p. 1177. doi:10.1145/2213977.2214082. ISBN 9781450312455.
+Jump up ^ Fredman, Michael Lawrence (July 1999). "On the Efficiency of Pairing Heaps and Related Data Structures" (PDF). Journal of the Association for Computing Machinery. 46 (4): 473501. doi:10.1145/320211.320214.
+Jump up ^ Pettie, Seth (2005). Towards a Final Analysis of Pairing Heaps (PDF). FOCS '05 Proceedings of the 46th Annual IEEE Symposium on Foundations of Computer Science. pp. 174183. CiteSeerX 10.1.1.549.471Freely accessible. doi:10.1109/SFCS.2005.75. ISBN 0-7695-2468-0.
+External links[edit]
+Binary Heap Applet by Kubo Kovac
+Open Data Structures - Section 10.1 - BinaryHeap: An Implicit Binary Tree
+Implementation of binary max heap in C by Robin Thomas
+Implementation of binary min heap in C by Robin Thomas
+[hide] v t e
+Data structures
+Types	
+Collection Container
+Abstract	
+Associative array Multimap List Stack Queue Double-ended queue Priority queue Double-ended priority queue Set Multiset Disjoint-set
+Arrays	
+Bit array Circular buffer Dynamic array Hash table Hashed array tree Sparse matrix
+Linked	
+Association list Linked list Skip list Unrolled linked list XOR linked list
+Trees	
+B-tree Binary search tree AA tree AVL tree Redblack tree Self-balancing tree Splay tree Heap Binary heap Binomial heap Fibonacci heap R-tree R* tree R+ tree Hilbert R-tree Trie Hash tree
+Graphs	
+Binary decision diagram Directed acyclic graph Directed acyclic word graph
+List of data structures
+Categories: Heaps (data structures)Binary trees
+Navigation menu
+Not logged inTalkContributionsCreate accountLog inArticleTalkReadEditView historySearch

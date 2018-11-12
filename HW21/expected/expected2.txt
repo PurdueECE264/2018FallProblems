@@ -1,0 +1,4 @@
+1a1d1r01b1
+1c0000
+numChar = 12
+abracadabra
