@@ -1,7 +1,5 @@
 // Modify this file at said locations
 #include "decode.h"
-#include "constant.h"
-// #include "freq.h"
 #include "list.h"
 #include "utility.h"
 
