@@ -1,5 +1,5 @@
-## K-Means Problem Test cases for grading
-
+## HW17 testcases for grading
+#
 To run the test case, use the following approach:
 
 1. copy all the required code file(all .c and .h files) except Makefile
