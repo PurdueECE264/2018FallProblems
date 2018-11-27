@@ -55,7 +55,7 @@ The codebook above is then used to compress the given file. The compressed file 
 ### Header
 The Huffman encoded binary file contains a header and then the rest of the file. Header is separated from the rest of the file by a newline `\n` character. There is only one newline `\n`, which appears after the header. Please notice that the header does not include the characters’ frequencies because this information is unnecessary for decoding.
 
-The header includes the “commands” 1 or 0 to indicate whether the following information is a leaf node or not. If a command bit is 1, it must be followed by an ASCII character. ASCII codes go from 0 to 255 (this assignment ignores the characters whose values are greater than 256), and 2^8 = 256, which means that 8 bits is sufficient to store a character. Note, however, that if the command bit is 0, then the rest of the header needs to be shifted right by one bit. If some bits in the last byte are unused, then these bits are zero. After writing the code book, the header uses the next 4 bytes (32 bits) to write the length of the article. This is an unsigned integer and can be as large as 2^32 − 1.
+The header includes the “commands” 1 or 0 to indicate whether the following information is a leaf node or not. If a command bit is 1, it must be followed by an ASCII character. ASCII codes go from 0 to 255 (this assignment ignores the characters whose values are greater than 256), and 2^8 = 256, which means that 8 bits is sufficient to store a character. Note, however, that if the command bit is 0, then it is different and is explained in `Decoding` section. If some bits in the last byte are unused, then these bits are zero. After writing the code book, the header uses the next 4 bytes (32 bits) to write the length of the article. This is an unsigned integer and can be as large as 2^32 − 1.
 
 Thus header is actually:
 ```
@@ -69,11 +69,11 @@ Since each letter uses 8 bits, the full header in binary format is :
 
 ```
 
-The letter `h` is 0x68 in hexadecimal and the 8-bit representation is `01101000`. This can be in `101101000 1`. Similarly, The letter `d` is 0x64 and the 8-bit representation is 01100100. The can be seen from the second byte and 2bit onwards to 3rd byte and 2bit : `1011001 00`. Please see the last 4 byte `10110010 00000000 00000000 00000000` is an integer with value `178`, which is the number of character in the file
+The letter `h` is 0x68 in hexadecimal and the 8-bit representation is `01101000`. This can be seen in header as `10110100 0`. Similarly, The letter `d` is 0x64 and the 8-bit representation is `01100100`. The can be seen from the second byte and 2bit onwards to 3rd byte and 2bit : `1011001 00`. Please see the last 4 byte `10110010 00000000 00000000 00000000` is an integer with value `178`, which is the number of character in the file
 
 # Decoding
 To decode the header, we will follow the the following logic:
-* The first bit is a command bit and it is always 1.
+* The first bit of the first byte is a command bit and it is always 1.
 * If a command is 1, then the next 8 bits(for this assignment) are the value stored in a leaf node. Create a tree node to store this value. Add this tree node to the beginning of the linked list. This tree node is a single-node tree.
 * If a command is 0 and the list has two or more nodes, then take the first two nodes from the list, create a tree node as the parent. Add this parent node to the linked list.
 * If a command is 0 and the list has only one node, then the complete tree has been built.
