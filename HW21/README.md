@@ -155,7 +155,7 @@ Please also include the following define flags for your Makefile.
 Type the following command to zip your file.
 
 ```bash
-	zip hw20.zip decode.c list.c
+	zip hw21.zip decode.c list.c
 ```
 **You will not get any credits if the submitted file is not zipped**
 
